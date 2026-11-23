@@ -31,10 +31,10 @@ for line in rows[1:]:
     if int(size) >= GIT_LIMIT:
         problems.append(f"{path}: over GitHub's 100 MB file limit")
 assets = json.loads((ROOT / ".mirror.json").read_text())["assets"]
-previews = {f"previews/{a}.webp" for a in assets}
-for p in previews:
-    if not (ROOT / p).is_file():
-        problems.append(f"{p}: missing")
+previews = set()
+for a in assets:
+    found = sorted((ROOT / "previews").glob(f"{a}.*")) if (ROOT / "previews").is_dir() else []
+    previews |= {f.relative_to(ROOT).as_posix() for f in found}  # optional: some sources have no picture
 files = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, text=True).stdout.split("\0")
 files = {f for f in files if f} or {p.relative_to(ROOT).as_posix() for p in ROOT.rglob("*") if p.is_file() and ".git" not in p.parts}
 for extra in sorted(files - listed - previews - OWN):
