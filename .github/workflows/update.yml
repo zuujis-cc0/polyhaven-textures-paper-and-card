@@ -31,4 +31,7 @@ jobs:
           persist-credentials: false
       - name: Update from Poly Haven
         working-directory: cc0-mirror
+        env:
+          MIRROR_ORG: ${{ github.repository_owner }}
+          MIRROR_REPO: "zuujis-cc0/cc0-mirror"
         run: python3 -m mirror.sync polyhaven polyhaven-textures-paper-and-card --self "$GITHUB_WORKSPACE/repo"

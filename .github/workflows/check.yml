@@ -1,5 +1,5 @@
 # Checks every file against MANIFEST.tsv (size and SHA-256) and that nothing unlisted got in.
-# Written by zuujis-cc0/cc0-mirror. Only an action published by GitHub itself, pinned by commit; read-only token.
+# Written by cc0-mirror. Only an action published by GitHub itself, pinned by commit; read-only token.
 name: check
 
 on:

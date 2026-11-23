@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Check this mirror against MANIFEST.tsv: every listed file is here with its size and SHA-256, every asset has a
-preview, and nothing else is in the repository. Written by zuujis-cc0/cc0-mirror; runs in the check workflow."""
+preview, and nothing else is in the repository. Written by cc0-mirror; runs in the check workflow."""
 import hashlib
 import json
 import subprocess
